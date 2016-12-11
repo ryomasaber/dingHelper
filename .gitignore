@@ -1,3 +1,5 @@
+/dingHelper.iml
+/.idea
 ### Java template
 *.class
 
@@ -13,5 +15,3 @@
 hs_err_pid*
 
 # Created by .ignore support plugin (hsz.mobi)
-/dingHelper.iml
-/.idea
