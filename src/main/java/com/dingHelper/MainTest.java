@@ -29,11 +29,18 @@ public class MainTest {
         String ticket = AuthHelper.getJsapiTicket(accessToken);
         System.err.println("ticket = " + ticket);
 
+ //todo 一、操作通讯录  =====================================================================================
         //获取部门列表
         List<Department> departmentList = DepartmentHelper.listDepartments(accessToken);
         for (Department department : departmentList) {
             System.out.println("department = " + department);
         }
+
+        //新增部门
+        //DepartmentHelper.createDepartment()
+
+
+//todo 二、操作微应用  =====================================================================================
 
 
     }
