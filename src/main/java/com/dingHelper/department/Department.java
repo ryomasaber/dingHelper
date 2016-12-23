@@ -22,9 +22,9 @@ package com.dingHelper.department;
  */
 public class Department {
 
-	private String id;        //部门id
+	private Long id;        //部门id
 	private String name;        //部门名称
-	private String parentid;    //父部门id,根部门id为1
+	private Long parentid;    //父部门id,根部门id为1
 	private Integer order;    //在父部门中的次序值
 	private Boolean createDeptGroup; //是否同步创建一个关联此部门的企业群, true表示是, false表示不是
 	private Boolean autoAddUser;//当群已经创建后，是否有新人加入部门会自动加入该群, true表示是, false表示不是
@@ -37,11 +37,11 @@ public class Department {
 	private String orgDeptOwner;//企业群群主
 	private String deptManagerUseridList;//部门的主管列表,取值为由主管的userid组成的字符串，不同的userid使用|符号进行分割
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -53,11 +53,11 @@ public class Department {
 		this.name = name;
 	}
 
-	public String getParentid() {
+	public Long getParentid() {
 		return parentid;
 	}
 
-	public void setParentid(String parentid) {
+	public void setParentid(Long parentid) {
 		this.parentid = parentid;
 	}
 

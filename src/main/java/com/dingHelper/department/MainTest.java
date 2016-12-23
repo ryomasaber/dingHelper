@@ -1,8 +1,8 @@
-package com.dingHelper;
+package com.dingHelper.department;
 
+import com.dingHelper.OApiException;
+import com.dingHelper.ResultCode;
 import com.dingHelper.auth.AuthHelper;
-import com.dingHelper.department.Department;
-import com.dingHelper.department.DepartmentHelper;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class MainTest {
         String ticket = AuthHelper.getJsapiTicket(accessToken);
         System.err.println("ticket = " + ticket);
 
- //todo 一、操作通讯录  =====================================================================================
+        //todo 一、操作通讯录  =====================================================================================
         //1.1获取部门列表
         List<Department> departmentList = DepartmentHelper.listDepartments(accessToken);
         for (Department department : departmentList) {

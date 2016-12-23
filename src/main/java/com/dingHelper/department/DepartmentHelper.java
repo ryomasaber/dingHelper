@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.dingHelper.Env;
 import com.dingHelper.OApiException;
 import com.dingHelper.OApiResultException;
+import com.dingHelper.ResultCode;
 import com.dingHelper.utils.HttpHelper;
 
 import java.util.ArrayList;
@@ -38,6 +39,38 @@ public class DepartmentHelper {
 			return response.getLong("id");
 		}
 		else {
+			throw new OApiResultException("id");
+		}
+	}
+
+	/**
+	 * 创建部门
+	 *
+	 * @param accessToken accessToken
+	 * @param department  参数(id为空)
+	 * @return 部门id
+	 * @throws OApiException
+	 * @Author Saber
+	 * @Date 2016/12/23 下午4:37
+	 */
+	public static long createDepartment(String accessToken, Department department) throws OApiException {
+		String url = Env.OAPI_HOST + "/department/create?" + "access_token=" + accessToken;
+		department.setId(null);
+		JSONObject response = HttpHelper.httpPost(url, JSONObject.toJSON(department));
+		if (response.containsKey("id")) {
+			return response.getLong("id");
+		} else {
+			throw new OApiResultException("id");
+		}
+	}
+
+	public static long createDepartmentWithCheck(String accessToken, Department department) throws OApiException {
+		String url = Env.OAPI_HOST + "/department/create?" + "access_token=" + accessToken;
+		department.setId(null);
+		JSONObject response = HttpHelper.httpPost(url, JSONObject.toJSON(department));
+		if (response.containsKey("id")) {
+			return response.getLong("id");
+		} else {
 			throw new OApiResultException("id");
 		}
 	}
@@ -76,15 +109,12 @@ public class DepartmentHelper {
 		String url = Env.OAPI_HOST + "/department/get?" + "access_token=" + accessToken + "&id=" + id;
 		JSONObject json = HttpHelper.httpGet(url);
 
-		Department department = new Department();
-
 		if (json.getInteger("errcode") == 0) {
-			department = JSON.toJavaObject(json, Department.class);
+			Department department = JSON.toJavaObject(json, Department.class);
 			return department;
 		}
 
-
-		return department;
+		return null;
 	}
 
 
@@ -94,9 +124,10 @@ public class DepartmentHelper {
 	 * @param id			部门id
 	 * @throws OApiException
 	 */
-	public static void deleteDepartment(String accessToken, Long id) throws OApiException{
+	public static ResultCode deleteDepartment(String accessToken, Long id) throws OApiException{
 		String url = Env.OAPI_HOST  + "/department/delete?" + "access_token=" + accessToken + "&id=" + id;
-		HttpHelper.httpGet(url);
+		JSONObject result = HttpHelper.httpGet(url);
+		return JSON.parseObject(result.toJSONString(),ResultCode.class);
 	}
 
 	/**
@@ -125,5 +156,21 @@ public class DepartmentHelper {
 		args.put("deptPerimits",deptPerimits);
 
 		HttpHelper.httpPost(url, args);
+	}
+
+
+	/**
+	 * 更新部门
+	 *
+	 * @param accessToken accessToken
+	 * @param department  参数
+	 * @return
+	 * @throws OApiException
+	 */
+	public static ResultCode updateDepartment(String accessToken, Department department) throws OApiException {
+		String url = Env.OAPI_HOST + "/department/update?" + "access_token=" + accessToken;
+
+		JSONObject result = HttpHelper.httpPost(url, JSONObject.toJSON(department));
+		return JSON.parseObject(result.toJSONString(),ResultCode.class);
 	}
 }
