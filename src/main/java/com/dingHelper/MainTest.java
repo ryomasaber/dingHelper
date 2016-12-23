@@ -36,6 +36,9 @@ public class MainTest {
             System.out.println("department = " + department);
         }
 
+        Department department = DepartmentHelper.getDepartment(accessToken, 16371636L);
+        System.out.println("department = " + department.toString());
+
         //新增部门
         //DepartmentHelper.createDepartment()
 
