@@ -6,27 +6,26 @@ import com.dingHelper.ResultCode;
  * 创建微应用 响应体
  * Created by Saber on 16/8/24.
  */
-public class CreateRep extends ResultCode{
+public class AgentResponse extends ResultCode {
 
     /**
      * 创建的微应用id
      */
-    private Long id;
+    private Long agentid;
 
 
-
-    public Long getId() {
-        return id;
+    public Long getAgentid() {
+        return agentid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAgentid(Long agentid) {
+        this.agentid = agentid;
     }
 
     @Override
     public String toString() {
-        return "CreateRep{" +
-                "id=" + id +
+        return "AgentResponse{" +
+                "agentid=" + agentid +
                 "} " + super.toString();
     }
 }

@@ -4,7 +4,7 @@ package com.dingHelper.agent.request;
  * 创建微应用 请求体
  * Created by Saber on 16/8/24.
  */
-public class CreateReq {
+public class AgentRequest {
 
     /**
      * 微应用的图标。需要调用上传接口将图标上传到钉钉服务器后获取到的mediaId<br/>
@@ -39,7 +39,7 @@ public class CreateReq {
 
 
     //无参构造方法
-    public CreateReq() {
+    public AgentRequest() {
     }
 
     /**
@@ -49,7 +49,7 @@ public class CreateReq {
      * @param appDesc       微应用的描述
      * @param homepageUrl   微应用的移动端主页
      */
-    public CreateReq(String appIcon, String appName, String appDesc, String homepageUrl) {
+    public AgentRequest(String appIcon, String appName, String appDesc, String homepageUrl) {
         this.appIcon = appIcon;
         this.appName = appName;
         this.appDesc = appDesc;
