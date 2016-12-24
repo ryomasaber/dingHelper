@@ -53,7 +53,7 @@ public class DepartmentHelper {
 	 * @Author Saber
 	 * @Date 2016/12/23 下午4:37
 	 */
-	public static long createDepartment(String accessToken, Department department) throws OApiException {
+	public static Long createDepartment(String accessToken, Department department) throws OApiException {
 		String url = Env.OAPI_HOST + "/department/create?" + "access_token=" + accessToken;
 		department.setId(null);
 		JSONObject response = HttpHelper.httpPost(url, JSONObject.toJSON(department));
@@ -64,7 +64,18 @@ public class DepartmentHelper {
 		}
 	}
 
-	public static long createDepartmentWithCheck(String accessToken, Department department) throws OApiException {
+	public static Long createDepartmentWithCheck(String accessToken, Department department) throws OApiException {
+
+		/**
+		 * 遍历所有部门查找重名部门
+		 */
+		List<Department> departmentList = DepartmentHelper.listDepartments(accessToken);
+		for (Department dept : departmentList) {
+			if (dept.equals(department.getName())) {
+				throw new OApiResultException("此部门已存在");
+			}
+		}
+		//新增
 		String url = Env.OAPI_HOST + "/department/create?" + "access_token=" + accessToken;
 		department.setId(null);
 		JSONObject response = HttpHelper.httpPost(url, JSONObject.toJSON(department));
