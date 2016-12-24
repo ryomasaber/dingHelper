@@ -19,6 +19,8 @@ public class DepartmentHelper {
 
 	/**
 	 *  创建部门
+	 * @Author Saber
+	 * @Date 2016/12/24 上午10:49
 	 * @param accessToken        accessToken
 	 * @param name                部门名称
 	 * @param parentId			上级部门id
@@ -45,13 +47,12 @@ public class DepartmentHelper {
 
 	/**
 	 * 创建部门
-	 *
+	 * @Author Saber
+	 * @Date 2016/12/23 下午4:37
 	 * @param accessToken accessToken
 	 * @param department  参数(id为空)
 	 * @return 部门id
 	 * @throws OApiException
-	 * @Author Saber
-	 * @Date 2016/12/23 下午4:37
 	 */
 	public static Long createDepartment(String accessToken, Department department) throws OApiException {
 		String url = Env.OAPI_HOST + "/department/create?" + "access_token=" + accessToken;
@@ -67,10 +68,12 @@ public class DepartmentHelper {
 	/**
 	 * 创建部门前先查询部门是否存在
 	 *
-	 * @param accessToken
-	 * @param department
+	 * @param accessToken accessToken
+	 * @param department  参数(id为空)
 	 * @return
 	 * @throws OApiException
+	 * @Author Saber
+	 * @Date 2016/12/24 上午10:49
 	 */
 	public static Long createDepartmentWithCheck(String accessToken, Department department) throws OApiException {
 
@@ -96,8 +99,10 @@ public class DepartmentHelper {
 
 	/**
 	 * 获取部门列表（ISV默认无调用权限）
-	 * @param accessToken
-	 * @return
+	 * @Author Saber
+	 * @Date 2016/12/24 上午10:50
+	 * @param accessToken accessToken
+	 * @return 部门列表
 	 * @throws OApiException
 	 */
 	public static List<Department> listDepartments(String accessToken) throws OApiException {
@@ -118,10 +123,11 @@ public class DepartmentHelper {
 
 	/**
 	 * 获取部门详情
-	 *
+	 * @Author Saber
+	 * @Date 2016/12/24 上午10:50
 	 * @param accessToken accessToken
 	 * @param id          部门id
-	 * @return
+	 * @return 部门详情
 	 * @throws OApiException
 	 */
 	public static Department getDepartment(String accessToken, Long id) throws OApiException {
@@ -139,8 +145,11 @@ public class DepartmentHelper {
 
 	/**
 	 * 删除部门 （ISV默认无调用权限）
+	 * @Author Saber
+	 * @Date 2016/12/24 上午10:51
 	 * @param accessToken    accessToken
-	 * @param id			部门id
+	 * @param id             部门id
+	 * @return resultCode
 	 * @throws OApiException
 	 */
 	public static ResultCode deleteDepartment(String accessToken, Long id) throws OApiException{
@@ -151,6 +160,8 @@ public class DepartmentHelper {
 
 	/**
 	 * 更新部门
+	 * @Author Saber
+	 * @Date 2016/12/24 上午10:51
 	 * @param accessToken            accessToken
 	 * @param name                    名称
 	 * @param parentId                父级部门id
@@ -180,10 +191,11 @@ public class DepartmentHelper {
 
 	/**
 	 * 更新部门
-	 *
+	 * @Author Saber
+	 * @Date 2016/12/24 上午10:51
 	 * @param accessToken accessToken
 	 * @param department  参数
-	 * @return
+	 * @return resultCode
 	 * @throws OApiException
 	 */
 	public static ResultCode updateDepartment(String accessToken, Department department) throws OApiException {
