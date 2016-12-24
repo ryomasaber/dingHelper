@@ -64,6 +64,14 @@ public class DepartmentHelper {
 		}
 	}
 
+	/**
+	 * 创建部门前先查询部门是否存在
+	 *
+	 * @param accessToken
+	 * @param department
+	 * @return
+	 * @throws OApiException
+	 */
 	public static Long createDepartmentWithCheck(String accessToken, Department department) throws OApiException {
 
 		/**
